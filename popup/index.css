@@ -1,0 +1,19 @@
+html
+{
+    width: 300px;  /* max: 800px */
+    height: 400px; /* max: 600px */
+}
+
+AppBar {
+    position: absolute;
+    bottom: 0px ;
+    width: "100%";
+    height: "30%";
+}
+
+Stack {
+    position: absolute;
+    bottom: 0px ;
+    width: "100%";
+    height: "70%";
+}
