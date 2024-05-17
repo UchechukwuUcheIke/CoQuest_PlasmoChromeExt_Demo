@@ -1,7 +1,7 @@
 //import './index.css';
 import { useState, Fragment } from "react"
 import "./index.css"
-import { Button, Typography, Toolbar, IconButton, Stack, AppBar } from '@mui/material';
+import { Button, Typography, Toolbar, IconButton, Stack, AppBar, Box } from '@mui/material';
 
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -17,23 +17,28 @@ function IndexPopup() {
   const [data, setData] = useState("")
 
   return (
-    <ThemeProvider theme={theme}>
-      <AppBar position="static">
-        <Toolbar>
-          <SearchIcon fontSize="large"/>
-          <Typography variant="h6">
+    <Box sx={{ display: 'flex' }}>
+      <AppBar>
+        <Toolbar sx={{
+          width: "100%",
+          maxWidth: 300,
+          mx: "auto",
+          padding: 0
+          }}>
+          <SearchIcon fontSize="large" />
+          <Typography variant="h6" margin="0px">
             CoQuest
           </Typography>
-          <IconButton>
+          <IconButton sx={{ marginLeft: "auto" }}>
             <SettingsIcon/>
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Stack position="absolute" bottom="0px" spacing={2} width = "100%" height="70%" direction="column" alignItems="center" justifyContent="center">
-        <Button variant="outlined" size="large">Explore Topics</Button>
-        <Button variant="outlined">Head to Website</Button>
+      <Stack position="absolute" sx={{ bottom: "0px", margin: "0px" }} spacing={5} width="95%" height="70%" direction="column" alignItems="stretch" justifyContent="flex-start">
+        <Button variant="contained" size="large">Explore Topics</Button>
+        <Button variant="contained" size="large">Head to Website</Button>
       </Stack>
-    </ThemeProvider>
+    </Box>
   )
 }
 
