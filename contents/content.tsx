@@ -1,5 +1,7 @@
 import cssText from "data-text:~/contents/content.css"
-import { Paper, Stack, Box, Divider, Button } from "@mui/material"
+import { Paper, Stack, Box, Divider, Button, AppBar, Typography, IconButton, Icon, Toolbar } from "@mui/material"
+import CloseIcon from '@mui/icons-material/Close';
+import SettingsIcon from '@mui/icons-material/Settings';
 import createCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
 
@@ -21,11 +23,25 @@ export const getStyle = () => {
 
 const GoogleSidebar = () => {
   return (
-      <div className="overlay">
+      <Box className = "overlay">
         <CacheProvider value={styleCache}>
         <Paper className="paper">
+          <AppBar
+              sx={{position: "relative", justifyContent: 'center'}}>
+            <Toolbar>
+              <Typography margin="0px" sx={{mr: 2, flexGrow: 1}}>
+                CoQuest
+              </Typography>
+
+              <IconButton sx={{backgroundColor: "grey" }}>
+                <CloseIcon/>
+              </IconButton>
+            </Toolbar>
+          </AppBar>
           <Box className="box">
-            <ResearchTopic />
+            
+
+
           </Box>
           <Divider orientation="vertical" variant="middle" />
           <Stack className="stack" direction="column" justifyContent="center" alignItems="stretch" spacing={2}>
@@ -34,29 +50,8 @@ const GoogleSidebar = () => {
           </Stack>
         </Paper>
         </CacheProvider>
-      </div>
+      </Box>
   )
 }
 
 export default GoogleSidebar
-
-const ResearchTopic = () => {
-  return (
-      <div className="overlay">
-        <CacheProvider value={styleCache}>
-        <Paper className="paper">
-          <Box className="box">
-            <Button variant="contained"> Research Question </Button>
-          </Box>
-
-          <Divider orientation="vertical" variant="middle" />
-          
-          <Stack className="stack" direction="column" justifyContent="center" alignItems="stretch" spacing={2}>
-            <Button variant="contained"> Reset </Button>
-            <Button variant="contained"> Export </Button>
-          </Stack>
-        </Paper>
-        </CacheProvider>
-      </div>
-  )
-}
