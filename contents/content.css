@@ -1,5 +1,5 @@
 .overlay {
-  position: fixed;
+  position: fixed; /* Keeps workbench at the same position in webpage */
   right: 25%;
   bottom: 5%;
   width: 50%;
