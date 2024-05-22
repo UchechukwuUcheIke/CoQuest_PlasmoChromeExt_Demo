@@ -1,17 +1,13 @@
 //import './index.css';
 import { useState, Fragment } from "react"
 import { sendToBackground, sendToContentScript } from "@plasmohq/messaging"
+import "./theme.ts"
 import "./index.css"
-import { Button, Typography, Toolbar, IconButton, Stack, AppBar, Box } from '@mui/material';
+import { Button, Typography, Toolbar, IconButton, Stack, AppBar, Box, Divider } from '@mui/material';
 
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const theme = createTheme({
-
-  });
-  
 
 
 function IndexPopup() {
@@ -39,26 +35,38 @@ function IndexPopup() {
 
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <AppBar>
+    <Box sx={{ display: 'flex', padding: "0px" }}>
+      <AppBar elevation={1} sx={{bgcolor: "white", justifyContent: 'center', height: "20%"}}>
         <Toolbar sx={{
           width: "100%",
-          maxWidth: 300,
           mx: "auto",
-          padding: 0
+          padding: "0px"
           }}>
-          <SearchIcon fontSize="large" />
-          <Typography variant="h6" margin="0px">
+          <SearchIcon fontSize="large" sx={{color: "#FF8C42"}} />
+          <Typography variant="h6" margin="0px" sx={{color: "gray", fontWeight: 'bold' }}>
             CoQuest
           </Typography>
           <IconButton sx={{ marginLeft: "auto" }} onClick={handleSettings}>
-            <SettingsIcon/>
+            <SettingsIcon sx={{color: "#FF8C42"}} />
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Stack position="absolute" sx={{ bottom: "0px", margin: "0px" }} spacing={5} width="95%" height="70%" direction="column" alignItems="stretch" justifyContent="flex-start">
-        <Button variant="contained" size="large" onClick={handleExploreTopics}>Explore Topics</Button>
-        <Button variant="contained" size="large" onClick={handleHeadToWebsite}>Head to Website</Button>
+      <Stack position="absolute" sx={{ top: "auto", bottom: "0px", margin: "0px" }} spacing={2} width="95%" height="70%" display="flex" direction="column" alignItems="stretch" justifyContent="flex-start">
+        
+        <Button variant="contained" size="large" 
+        sx={{bgcolor: "#FF8C42", 
+        '&:hover': {background: "#FF9C5C"}}}
+         onClick={handleExploreTopics}>
+          Explore Topics
+        </Button>
+
+        <Divider variant="middle" />
+        <Button variant="contained" size="large"
+        sx={{bgcolor: "#FF8C42",
+        '&:hover': {background: "#FF9C5C"}}}
+        onClick={handleHeadToWebsite}>
+          Head to Website
+        </Button>
       </Stack>
     </Box>
   )

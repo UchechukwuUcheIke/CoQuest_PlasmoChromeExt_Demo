@@ -1,10 +1,9 @@
 import cssText from "data-text:~/contents/content.css"
 import { Paper, Stack, Box, Divider, Button, AppBar, Typography, IconButton, Accordion, Toolbar } from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close';
-import SettingsIcon from '@mui/icons-material/Settings';
 import createCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
-
+import SearchIcon from '@mui/icons-material/Search';
 import { useState, useEffect } from "react";
 
 
@@ -56,13 +55,14 @@ const Workbench = () => {
         <Paper className="paper" sx={{
         display: 'flex'}}>
           <AppBar
-              sx={{position: "relative", justifyContent: 'center', height: "20%"}}>
+              sx={{bgcolor: "white", position: "relative", justifyContent: 'center', height: "20%"}}>
             <Toolbar>
-              <Typography margin="0px" sx={{mr: 2, flexGrow: 1}}>
+              <SearchIcon fontSize="large" sx={{color: "#FF8C42"}} />
+              <Typography margin="0px" sx={{mr: 2, flexGrow: 1, color: "gray", fontWeight: 'bold' }}>
                 CoQuest
               </Typography>
-
-              <IconButton onClick={handleOnExit}>
+              
+              <IconButton sx={{'&:hover': {background: "#990000", color: "white"}}} onClick={handleOnExit}>
                 <CloseIcon/>
               </IconButton>
             </Toolbar>
@@ -76,8 +76,10 @@ const Workbench = () => {
           </Stack>
           <Divider orientation="vertical" variant="middle" flexItem/>
           <Stack className="stack" direction="column" justifyContent="center" alignItems="stretch" spacing={2}>
-            <Button variant="contained"> Reset </Button>
-            <Button variant="contained" onClick={handleOnExport}> Export </Button>
+            <Button variant="contained" sx={{bgcolor: "#FF8C42",
+        '&:hover': {background: "#FF9C5C"}}}> Reset </Button>
+            <Button variant="contained" sx={{bgcolor: "#FF8C42",
+        '&:hover': {background: "#FF9C5C"}}} onClick={handleOnExport}> Export </Button>
           </Stack>
         </Paper>
         </CacheProvider>
