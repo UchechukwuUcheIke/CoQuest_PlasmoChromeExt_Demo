@@ -16,7 +16,7 @@ function IndexPopup() {
     //TODO: Change this to Plasmo's messaging tools for communication
     // Sends message to content script to make the workbench visible
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { action: 'toggle-workbench-visibility' }, (response) => {
+      chrome.tabs.sendMessage(tabs[0].id, {from: "popup", to:"workbench", action: 'toggle-workbench-visibility' }, (response) => {
         if (response && response.status === 'success') {
           
         }
@@ -35,7 +35,7 @@ function IndexPopup() {
 
 
   return (
-    <Box sx={{ display: 'flex', padding: "0px" }}>
+    <Box sx={{ display: 'flex', padding: "0px", bgcolor: "#EEEEEE" }}>
       <AppBar elevation={1} sx={{bgcolor: "white", justifyContent: 'center', height: "20%"}}>
         <Toolbar sx={{
           width: "100%",
@@ -51,7 +51,8 @@ function IndexPopup() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Stack position="absolute" sx={{ top: "auto", bottom: "0px", margin: "0px" }} spacing={2} width="95%" height="70%" display="flex" direction="column" alignItems="stretch" justifyContent="flex-start">
+      <Stack position="absolute" sx={{ top: "auto", bottom: "0px", margin: "0px" }}
+         spacing={2} width="95%" height="70%" display="flex" direction="column" alignItems="stretch" justifyContent="flex-start">
         
         <Button variant="contained" size="large" 
         sx={{bgcolor: "#FF8C42", 
