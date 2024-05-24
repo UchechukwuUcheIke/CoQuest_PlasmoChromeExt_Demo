@@ -29,7 +29,7 @@ function IndexPopup() {
   }
 
   function handleHeadToWebsite() {
-    window.open("https://www.wikipedia.org/", "_blank")
+    window.open("https://github.com/yiren-liu/coquest?tab=readme-ov-file", "_blank")
   }
 
 

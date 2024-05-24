@@ -1,4 +1,4 @@
-import cssText from "data-text:~/contents/hint.css"
+import cssText from "data-text:~/contents/overlay-hint.css"
 import type { PlasmoCSConfig } from "plasmo"
  
 import { Button, Box } from "@mui/material"
@@ -27,11 +27,14 @@ export const getStyle = () => {
   return style
 }
 
-const Hint = () => {
+/**
+ * Appears on bottom right of user's screen when on a research paper page. Suggests usage of CoQuest Chrome Extension
+ * @returns React Component
+ */
+const HintButton = () => {
   const [visible, setVisible] = useState(true);
 
   function handleOnOpenWorkBench() {
-    console.log("Send");
     chrome.runtime.sendMessage({ from: "hint", to: "workbench", action: 'toggle-workbench-visibility' }, (response) => {
       if (response && response.status === 'success') {
         setVisible(false);
@@ -56,4 +59,4 @@ const Hint = () => {
   )
 }
 
-export default Hint
+export default HintButton

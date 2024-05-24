@@ -23,14 +23,14 @@ export const getStyle = () => {
 }
 
 const Workbench = () => {
-  const [workbenchOpen, setWorkbenchOpen] = useState(true); //TODO: Change this to false later
+  const [workbenchOpen, setWorkbenchOpen] = useState(false);
 
   function handleOnExit() {
     setWorkbenchOpen(false);
   }
 
   function handleOnExport() {
-    window.open("https://www.wikipedia.org/", "_blank")
+    window.open("https://github.com/yiren-liu/coquest?tab=readme-ov-file", "_blank")
   }
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Workbench = () => {
       <CacheProvider value={styleCache}>
       <Box className = "overlay">
         
-        <Paper className="paper" >
+        <Paper className="paper" elevation={3}>
           <AppBar elevation={1}
               sx={{bgcolor: "white", position: "relative", justifyContent: 'center', height: "20%"}}>
             <Toolbar>
