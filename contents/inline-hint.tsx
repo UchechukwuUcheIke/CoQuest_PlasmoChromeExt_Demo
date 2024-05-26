@@ -1,5 +1,5 @@
 import type { PlasmoGetInlineAnchorList, PlasmoCSConfig, PlasmoGetStyle } from "plasmo"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 import someCoolImage from "data-base64:~assets/icon.png"
  
@@ -15,12 +15,11 @@ const style = document.createElement("style")
 
 export const getStyle: PlasmoGetStyle = () => style
 
-/** 
+
 export const config: PlasmoCSConfig = {
     matches: ["https://scholar.google.com/scholar?*", "https://www.google.com/search?*"],
     all_frames: true
 }
-*/
 
 /**
  * Appears adjacent to research paper links on the Google Scholar page. Suggests usage of CoQuest Chrome Extension
@@ -43,7 +42,7 @@ const InlineHintButton = ({ anchor }) => {
     const textContent = anchor.element.textContent
     //Using regular HTML instead of MUI components as MUI components do not render properly for inline Plasmo CSUI Components
     return (
-        <button>
+        <button onClick={handleOnOpenWorkBench}>
             <img src={someCoolImage} width="20" height="20"></img>
         </button>
     )
