@@ -7,12 +7,12 @@ import createCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
 import SearchIcon from '@mui/icons-material/Search';
 
-import { ArcherContainer, ArcherElement } from 'react-archer';
+import ReactFlow from 'reactflow';
+
 
 import { useState, useEffect } from "react";
 
 import buildTree from "./tree";
-
 
 const style = document.createElement("style")
 style.textContent = cssText
@@ -29,7 +29,7 @@ export const getStyle = () => {
 }
 
 const Workbench = () => {
-  const [workbenchOpen, setWorkbenchOpen] = useState(false);
+  const [workbenchOpen, setWorkbenchOpen] = useState(true); //TODO: Set this back to false before the demo
 
   const data = [
     { id: 1, parentId: null, name: "Root" },
@@ -42,6 +42,12 @@ const Workbench = () => {
 
   const dataTree = buildTree(data)
   //const [currentNode, setCurrentNode] = dataTree[0];
+
+  const initialNodes = [
+    { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
+    { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
+  ];
+  const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
 
 
   function handleOnExit() {
@@ -83,15 +89,9 @@ const Workbench = () => {
           </AppBar>
           <Box className="box" sx={{display: 'flex'}}>
             <Container sx={{ display: 'flex', flexGrow: 4, backgroundImage: grid_texture, bgcolor: "#EEEEEE"}}>
-              
-              <Stack direction="row" spacing={2} justifyContent="space-around" alignItems="center" 
-                sx={{ flexGrow: 1, backgroundImage: grid_texture, bgcolor: "#DDDDDD"}}>
-                  <Button variant="contained"> Research Topic </Button>
-              </Stack>
-              <Stack direction="row" spacing={2} justifyContent="space-around" alignItems="center" 
-                sx={{ flexGrow: 1, bgcolor: "#CCCCCC"}}>
-                  <Button variant="contained"> Persona </Button>
-              </Stack>
+
+              <ReactFlow nodes={initialNodes} edges={initialEdges} />
+
             </Container>
             <Divider orientation="vertical" flexItem/>
             <Stack  direction="column" justifyContent="center" alignItems="stretch" spacing={2} sx={{ padding: "5px", flexGrow: 1}}>
