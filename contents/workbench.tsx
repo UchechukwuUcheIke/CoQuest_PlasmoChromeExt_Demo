@@ -1,12 +1,18 @@
 import cssText from "data-text:~/contents/workbench.css"
 import grid_texture from "data-base64:~assets/grid-texture.jpg"
 
-import { Paper, Stack, Box, Divider, Button, AppBar, Typography, IconButton, Accordion, Toolbar } from "@mui/material"
+import { Paper, Stack, Box, Divider, Button, AppBar, Typography, IconButton, Container, Toolbar } from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close';
 import createCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
 import SearchIcon from '@mui/icons-material/Search';
+
+import { ArcherContainer, ArcherElement } from 'react-archer';
+
 import { useState, useEffect } from "react";
+
+import buildTree from "./tree";
+
 
 const style = document.createElement("style")
 style.textContent = cssText
@@ -24,6 +30,19 @@ export const getStyle = () => {
 
 const Workbench = () => {
   const [workbenchOpen, setWorkbenchOpen] = useState(false);
+
+  const data = [
+    { id: 1, parentId: null, name: "Root" },
+    { id: 2, parentId: 1, name: "Section A" },
+    { id: 3, parentId: 1, name: "Section B" },
+    { id: 4, parentId: 2, name: "Page 1" },
+    { id: 5, parentId: 2, name: "Page 2" },
+    { id: 6, parentId: 3, name: "Page 3" }
+  ];
+
+  const dataTree = buildTree(data)
+  //const [currentNode, setCurrentNode] = dataTree[0];
+
 
   function handleOnExit() {
     setWorkbenchOpen(false);
@@ -63,15 +82,17 @@ const Workbench = () => {
             </Toolbar>
           </AppBar>
           <Box className="box" sx={{display: 'flex'}}>
-            <Stack direction="row" spacing={2} justifyContent="space-around" alignItems="center" 
-              sx={{ flexGrow: 4, backgroundImage: grid_texture, bgcolor: "#EEEEEE"}}>
-              <Button variant="contained">
-                Research Question
-              </Button>
-              <Button variant="contained">
-                Persona
-              </Button>
-            </Stack>
+            <Container sx={{ display: 'flex', flexGrow: 4, backgroundImage: grid_texture, bgcolor: "#EEEEEE"}}>
+              
+              <Stack direction="row" spacing={2} justifyContent="space-around" alignItems="center" 
+                sx={{ flexGrow: 1, backgroundImage: grid_texture, bgcolor: "#DDDDDD"}}>
+                  <Button variant="contained"> Research Topic </Button>
+              </Stack>
+              <Stack direction="row" spacing={2} justifyContent="space-around" alignItems="center" 
+                sx={{ flexGrow: 1, bgcolor: "#CCCCCC"}}>
+                  <Button variant="contained"> Persona </Button>
+              </Stack>
+            </Container>
             <Divider orientation="vertical" flexItem/>
             <Stack  direction="column" justifyContent="center" alignItems="stretch" spacing={2} sx={{ padding: "5px", flexGrow: 1}}>
               <Button variant="contained"
