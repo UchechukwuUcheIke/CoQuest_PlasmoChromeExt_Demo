@@ -8,7 +8,7 @@ import { CacheProvider } from "@emotion/react"
 import SearchIcon from '@mui/icons-material/Search';
 
 import ReactFlow from 'reactflow';
-
+import TextCSS from 'data-text:~/node_modules/reactflow/dist/style.css'; //TODO: Find a way to import reactflow styling as text
 
 import { useState, useEffect } from "react";
 
@@ -16,6 +16,7 @@ import buildTree from "./tree";
 
 const style = document.createElement("style")
 style.textContent = cssText
+style.textContent += TextCSS
 
 const styleCache = createCache({
   key: "plasmo-mui-cache",
